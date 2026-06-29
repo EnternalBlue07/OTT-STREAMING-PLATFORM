@@ -1,0 +1,24 @@
+[project]
+name = "ott-backend"
+version = "0.1.0"
+description = "OTT Streaming Platform — FastAPI backend (Phase 0 foundation)"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["domain", "application", "infrastructure", "interface", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+ignore = ["B008"]  # FastAPI uses function calls (Depends) in argument defaults
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/conftest.py" = ["E402", "I001"]

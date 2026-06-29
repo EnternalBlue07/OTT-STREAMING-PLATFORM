@@ -1,0 +1,19 @@
+# Prometheus scrape config for the OTT backend.
+# Run locally (no Docker required) with:
+#   prometheus --config.file=ops/prometheus.yml
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: ott-backend
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["localhost:8001"]
+        labels:
+          service: ott-backend
+          env: local
+
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]

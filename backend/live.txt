@@ -1,0 +1,1 @@
+﻿created=midnight-protocol-2-00b51d | ERR=Cannot overwrite variable HOME because it is read-only or constant.

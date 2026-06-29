@@ -1,0 +1,16 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["@/features/*/*"],
+            "message": "Do not import another feature's internals. Promote shared code to @/shared."
+          }
+        ]
+      }
+    ]
+  }
+}
