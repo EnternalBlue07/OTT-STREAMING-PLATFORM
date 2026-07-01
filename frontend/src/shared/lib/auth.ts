@@ -15,12 +15,20 @@ import { betterAuth } from "better-auth";
 function buildDatabase() {
   const pgUrl = process.env.AUTH_DATABASE_URL?.trim();
   if (pgUrl) {
-    // Lazy require to keep native/server deps out of the edge bundle.
     const { Pool } = require("pg");
     return new Pool({ connectionString: pgUrl });
   }
-  const Database = require("better-sqlite3");
-  return new Database(process.env.AUTH_SQLITE_PATH || "./auth.sqlite");
+  // In production (Vercel), better-sqlite3 may not be available.
+  // Fall back to pg if AUTH_DATABASE_URL is set, otherwise try SQLite.
+  try {
+    const Database = require("better-sqlite3");
+    return new Database(process.env.AUTH_SQLITE_PATH || "./auth.sqlite");
+  } catch {
+    // If better-sqlite3 is unavailable (Vercel serverless), use pg with a
+    // fallback connection string. Set AUTH_DATABASE_URL in production.
+    const { Pool } = require("pg");
+    return new Pool({ connectionString: process.env.AUTH_DATABASE_URL || "postgresql://localhost/ott" });
+  }
 }
 
 function buildSocialProviders() {
