@@ -9,7 +9,7 @@ const nextConfig = {
   // Hardcode the production API URL so Vercel builds always point to Render backend.
   // This overrides NEXT_PUBLIC_API_BASE at build time.
   env: {
-    NEXT_PUBLIC_API_BASE: process.env.NEXT_PUBLIC_API_BASE || "https://ott-streaming-platform.onrender.com",
+    NEXT_PUBLIC_API_BASE: process.env.NEXT_PUBLIC_API_BASE || "https://ott-streaming-backend.onrender.com",
   },
 };
 

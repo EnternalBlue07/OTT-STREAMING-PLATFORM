@@ -8,7 +8,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NEXT_PUBLIC_API_BASE = "https://ott-streaming-platform.onrender.com"
+  NEXT_PUBLIC_API_BASE = "https://ott-streaming-backend.onrender.com"
   NEXT_PUBLIC_APP_URL = "https://sarfarosh-streams.netlify.app"
   BETTER_AUTH_URL = "https://sarfarosh-streams.netlify.app"
   BETTER_AUTH_SECRET = "e5ba4b0eada7f089634ff2b68c4b2f114aa39e53489be24e37fdfe18b06031dd"

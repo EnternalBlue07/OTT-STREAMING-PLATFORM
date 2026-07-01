@@ -7,7 +7,7 @@
  * - Unwraps the standard { data, error, meta } envelope.
  */
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://ott-streaming-platform.onrender.com";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://ott-streaming-backend.onrender.com";
 
 export interface ApiError {
   code: string;
