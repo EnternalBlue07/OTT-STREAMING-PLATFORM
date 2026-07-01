@@ -1,0 +1,17 @@
+# Netlify deployment config for the Next.js frontend.
+# The @netlify/plugin-nextjs handles SSR/ISR/API routes automatically.
+
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "frontend/.next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_PUBLIC_API_BASE = "https://ott-streaming-platform.onrender.com"
+  NEXT_PUBLIC_APP_URL = "https://sarfarosh-streams.netlify.app"
+  BETTER_AUTH_URL = "https://sarfarosh-streams.netlify.app"
+  BETTER_AUTH_SECRET = "sarfarosh-production-secret-32chars-minimum-ok"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
