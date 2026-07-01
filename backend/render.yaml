@@ -6,12 +6,12 @@
 # 2. New → Web Service → Connect your GitHub repo
 # 3. Set root directory to "backend"
 # 4. Render auto-detects this file and uses it
-# 5. After deploy, copy your URL (e.g., https://ott-backend-xyz.onrender.com)
-# 6. Set NEXT_PUBLIC_API_BASE in Netlify to that URL
+# 5. Backend URL will be: https://ott-streaming-platform.onrender.com
+# 6. Frontend (Netlify): https://sarfarosh-streams.netlify.app
 
 services:
   - type: web
-    name: ott-backend
+    name: ott-streaming-platform
     runtime: python
     region: singapore  # closest to India
     plan: free
@@ -26,9 +26,9 @@ services:
       - key: DATABASE_URL
         value: sqlite:///./ott_production.sqlite3
       - key: CORS_ALLOW_ORIGINS
-        sync: false  # set this manually to your Netlify URL after deploy
+        value: "https://sarfarosh-streams.netlify.app"
       - key: BETTER_AUTH_URL
-        sync: false  # set this to your Netlify URL
+        value: "https://sarfarosh-streams.netlify.app"
       - key: LOG_JSON
         value: "true"
       - key: RATE_LIMIT_REQUESTS
