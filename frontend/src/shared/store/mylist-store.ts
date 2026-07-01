@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { TitleCard } from "@/features/home/types";
+import type { TitleCard } from "@/shared/types/content";
 
 interface MyListState {
   items: Record<string, TitleCard>;

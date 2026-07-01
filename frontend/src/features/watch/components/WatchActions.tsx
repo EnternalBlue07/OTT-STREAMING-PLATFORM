@@ -3,7 +3,7 @@
 import { Check, Download, Play, Plus, Share2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import type { TitleCard } from "@/features/home/types";
+import type { TitleCard } from "@/shared/types/content";
 import { Button } from "@/shared/components/ui/Button";
 import { useMyList } from "@/shared/store/mylist-store";
 import type { WatchDetail } from "../types";

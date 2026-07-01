@@ -147,11 +147,11 @@ export function useHlsPlayer({ videoRef, src, dispatch, fallbackAudio, fallbackS
 
   // --- Clean destroy on unmount (Problem 6 fix) ---
   useEffect(() => {
+    const video = videoRef.current; // capture ref value for cleanup
     init();
     return () => {
       destroyedRef.current = true;
       const hls = hlsRef.current;
-      const video = videoRef.current;
       if (hls) {
         hls.destroy();
         hlsRef.current = null;
@@ -159,9 +159,10 @@ export function useHlsPlayer({ videoRef, src, dispatch, fallbackAudio, fallbackS
       if (video) {
         video.pause();
         video.removeAttribute("src");
-        video.load(); // force release of media resources
+        video.load();
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [init]);
 
   const setQuality = useCallback((index: number) => {

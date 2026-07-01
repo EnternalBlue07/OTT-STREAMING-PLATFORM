@@ -6,8 +6,8 @@
       {
         "patterns": [
           {
-            "group": ["@/features/*/*"],
-            "message": "Do not import another feature's internals. Promote shared code to @/shared."
+            "group": ["@/features/*/components/*", "@/features/*/hooks/*", "@/features/*/store/*"],
+            "message": "Do not import another feature's deep internals. Import from the feature root or promote to @/shared."
           }
         ]
       }

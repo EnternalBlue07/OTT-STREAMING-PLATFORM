@@ -1,37 +1,5 @@
-export interface QualityVariant {
-  label: string; // 480p | 720p | 1080p | 4K
-  size_mb: number;
-  source_url: string;
-  audio: string;
-}
-
-export interface TitleCard {
-  id: string;
-  title: string;
-  tagline: string;
-  year: number;
-  runtime_min: number;
-  maturity: string;
-  content_type: string; // movie | web-series | tv-series
-  genres: string[];
-  moods: string[];
-  languages: string[];
-  rating: number;
-  accent: string;
-  gradient: string[];
-  badges: string[];
-  poster_url: string | null;
-  quality_labels: string[];
-  match: number;
-}
-
-export interface TitleDetail extends TitleCard {
-  synopsis: string;
-  vibe_tags: string[];
-  ott: string[];
-  qualities: QualityVariant[];
-  trending_score: number;
-}
+// Re-export shared types so home feature internals keep working
+export type { TitleCard, TitleDetail, QualityVariant } from "@/shared/types/content";
 
 export interface Mood {
   id: string;
@@ -42,11 +10,11 @@ export interface Mood {
 export interface Rail {
   key: string;
   title: string;
-  items: TitleCard[];
+  items: import("@/shared/types/content").TitleCard[];
 }
 
 export interface HomePayload {
-  spotlight: TitleDetail;
+  spotlight: import("@/shared/types/content").TitleDetail;
   rails: Rail[];
   moods: Mood[];
 }

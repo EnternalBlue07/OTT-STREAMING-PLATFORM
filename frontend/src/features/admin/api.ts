@@ -1,5 +1,5 @@
 import { apiFetch } from "@/shared/lib/api-client";
-import type { TitleDetail } from "@/features/home/types";
+import type { TitleDetail } from "@/shared/types/content";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8001";
 
