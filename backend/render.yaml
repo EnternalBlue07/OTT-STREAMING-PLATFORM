@@ -1,0 +1,35 @@
+# Render.com deployment config for the FastAPI backend.
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Steps:
+# 1. Sign up at render.com (free tier)
+# 2. New → Web Service → Connect your GitHub repo
+# 3. Set root directory to "backend"
+# 4. Render auto-detects this file and uses it
+# 5. After deploy, copy your URL (e.g., https://ott-backend-xyz.onrender.com)
+# 6. Set NEXT_PUBLIC_API_BASE in Netlify to that URL
+
+services:
+  - type: web
+    name: ott-backend
+    runtime: python
+    region: singapore  # closest to India
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DATABASE_URL
+        value: sqlite:///./ott_production.sqlite3
+      - key: CORS_ALLOW_ORIGINS
+        sync: false  # set this manually to your Netlify URL after deploy
+      - key: BETTER_AUTH_URL
+        sync: false  # set this to your Netlify URL
+      - key: LOG_JSON
+        value: "true"
+      - key: RATE_LIMIT_REQUESTS
+        value: "200"
+      - key: RATE_LIMIT_WINDOW_SECONDS
+        value: "60"
