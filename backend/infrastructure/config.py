@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     redis_url: str = ""
 
     # CORS
-    cors_allow_origins: str = "http://localhost:3000"
+    cors_allow_origins: str = "*"
 
     # Auth verification (Better Auth lives in the Next.js layer)
     better_auth_url: str = "http://localhost:3000"

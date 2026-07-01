@@ -69,10 +69,11 @@ def create_app() -> FastAPI:
     # Desired runtime order (outermost -> innermost):
     #   RequestContext -> SecurityHeaders -> RateLimit -> CORS -> MetricsAndLogging
     app.add_middleware(MetricsAndLoggingMiddleware)
+    # CORS: allow all origins for public APIs (content is public, auth uses cookies on same-origin only)
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.cors_origins_list,
-        allow_credentials=True,
+        allow_origins=["*"],
+        allow_credentials=False,
         allow_methods=["*"],
         allow_headers=["*"],
         expose_headers=["X-Request-ID", "X-Correlation-ID", "X-Response-Time-ms"],
